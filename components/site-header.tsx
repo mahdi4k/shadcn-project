@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { useDirection } from "@/components/DirectionWrapper";
+import { useDirection } from "@/components/direction-wrapper";
 import { BellDot, Globe, Moon, Search, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
@@ -49,7 +49,7 @@ export function SiteHeader() {
         {/* ✅ Theme Toggle */}
         {isMounted && (
           <Button
-            className="rounded-full cursor-pointer text-primary"
+            className="rounded-full cursor-pointer bg-muted text-primary"
             variant="secondary"
             size="icon"
             onClick={toggleTheme}
@@ -62,7 +62,7 @@ export function SiteHeader() {
         <Button
           variant="secondary"
           size={'icon'}
-          className="flex items-center cursor-pointer gap-2 rounded-full px-3 py-1.5 text-primary hover:bg-muted/80"
+          className="flex items-center bg-muted cursor-pointer gap-2 rounded-full px-3 py-1.5 text-primary hover:bg-muted/80"
         >
           <BellDot className="w-5 h-5" />
         </Button>

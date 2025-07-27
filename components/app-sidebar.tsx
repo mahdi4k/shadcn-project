@@ -30,7 +30,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { useDirection } from "@/components/DirectionWrapper";
+import { useDirection } from "@/components/direction-wrapper";
 
 const data = {
   user: {
