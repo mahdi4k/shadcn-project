@@ -53,7 +53,7 @@ const RecentTransactions = () => {
             className="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg transition-colors"
           >
             <div className="flex items-center">
-              <div className={`${transaction.iconBg} p-3 rounded-2xl ltr:me-4 rtl:ms-4`}>
+              <div className={`${transaction.iconBg} p-3 rounded-2xl  me-4  `}>
                 {transaction.icon}
               </div>
               <div>

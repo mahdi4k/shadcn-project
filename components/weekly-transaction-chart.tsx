@@ -61,18 +61,18 @@ export default function WeeklyTransactionChart() {
             {/* Totals */}
             <div className="flex space-x-6 mt-4 md:mt-0">
               <div className="flex items-center">
-                <div className="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
+                <div className="w-3 h-3 bg-blue-500 rounded-full me-2"></div>
                 <span className="text-sm font-medium text-gray-700">Debit</span>
               </div>
               <div className="flex items-center">
-                <div className="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                <div className="w-3 h-3 bg-green-500 rounded-full me-2"></div>
                 <span className="text-sm font-medium text-gray-700">Credit</span>
               </div>
             </div>
           </div>
 
           {/* Chart */}
-          <div className="h-64 mt-8">
+          <div style={{direction:'ltr'}} className="h-64 mt-8">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart
                 data={data}

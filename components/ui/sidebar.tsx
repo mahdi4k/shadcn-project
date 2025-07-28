@@ -387,7 +387,7 @@ function SidebarGroup({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="sidebar-group"
       data-sidebar="group"
-      className={cn("relative flex w-full min-w-0 flex-col p-2", className)}
+      className={cn("relative flex w-full min-w-0 flex-col", className)}
       {...props}
     />
   )
@@ -474,12 +474,38 @@ function SidebarMenuItem({ className, ...props }: React.ComponentProps<"li">) {
 }
 
 const sidebarMenuButtonVariants = cva(
-  "peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-hidden ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-data-[sidebar=menu-action]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! [&>span:last-child]:truncate [&>svg]:shrink-0 data-[active=true]:border-l-[4px] data-[active=true]:border-l-blue-500 data-[active=true]:text-blue-500 data-[active=true]:[&>svg]:text-blue-500",
+[
+    // === Base Styles ===
+    "peer/menu-button relative flex w-full items-center gap-2 overflow-hidden ps-10  text-left text-sm outline-hidden ring-sidebar-ring",
+    "transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2",
+    "active:bg-sidebar-accent active:text-sidebar-accent-foreground",
+    "disabled:pointer-events-none disabled:opacity-50",
+    "group-has-data-[sidebar=menu-action]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50",
+    "group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2!",
+    "[&>span:last-child]:truncate [&>svg]:shrink-0",
 
+    // === Active State Styles ===
+    "data-[active=true]:text-blue-500 data-[active=true]:[&>svg]:text-blue-500",
+
+    // === Pseudo-element for active indicator ===
+    "relative", // needed for absolute before
+    "data-[active=true]:before:content-[''] data-[active=true]:before:absolute",
+    "data-[active=true]:before:top-0 data-[active=true]:before:bottom-0",
+    "data-[active=true]:before:w-[7px] data-[active=true]:before:bg-blue-500",
+
+    // === LTR version ===
+    "ltr:data-[active=true]:before:left-0",
+    "ltr:data-[active=true]:before:rounded-tr-xl ltr:data-[active=true]:before:rounded-br-xl",
+
+    // === RTL version ===
+    "rtl:data-[active=true]:before:right-0",
+    "rtl:data-[active=true]:before:rounded-tl-xl rtl:data-[active=true]:before:rounded-bl-xl",
+  ].join(" "),
   {
     variants: {
       variant: {
-        default: "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
+        default:
+          "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
         outline:
           "bg-background shadow-[0_0_0_1px_hsl(var(--sidebar-border))] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground hover:shadow-[0_0_0_1px_hsl(var(--sidebar-accent))]",
       },
@@ -496,7 +522,6 @@ const sidebarMenuButtonVariants = cva(
         xl: "[&>svg]:size-6",
       },
     },
-
     defaultVariants: {
       variant: "default",
       size: "default",

@@ -13,7 +13,7 @@ export function SectionCards() {
 
         {/* Text section */}
         <div>
-          <div className="text-lg font-medium text-primary/70">My Balance</div>
+          <div className="text-lg font-medium text-gray-400">My Balance</div>
           <div className="text-2xl mt-2 font-bold text-foreground">$12,750</div>
         </div>
       </Card>
@@ -25,7 +25,7 @@ export function SectionCards() {
 
         {/* Text section */}
         <div>
-          <div className="text-lg font-medium text-primary/70">My Balance</div>
+          <div className="text-lg font-medium text-gray-400">My Balance</div>
           <div className="text-2xl mt-2 font-bold text-foreground">$12,750</div>
         </div>
       </Card>
@@ -37,7 +37,7 @@ export function SectionCards() {
 
         {/* Text section */}
         <div>
-          <div className="text-lg font-medium text-primary/70">My Balance</div>
+          <div className="text-lg font-medium text-gray-400">My Balance</div>
           <div className="text-2xl mt-2 font-bold text-foreground">$12,750</div>
         </div>
       </Card>
@@ -49,7 +49,7 @@ export function SectionCards() {
 
         {/* Text section */}
         <div>
-          <div className="text-lg font-medium text-primary/70">My Balance</div>
+          <div className="text-lg font-medium text-gray-400">My Balance</div>
           <div className="text-2xl mt-2 font-bold text-foreground">$12,750</div>
         </div>
       </Card>
