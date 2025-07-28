@@ -6,6 +6,7 @@ import "../globals.css";
 import DirectionWrapper from "@/components/direction-wrapper";
 import { ThemeProvider } from "@/components/theme-provider";
 import AppHydrationLoader from "@/components/app-hydration-loader";
+import { LoaderProvider } from "@/components/loader-context";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,7 +22,7 @@ const vazir = Vazirmatn({
   variable: "--font-vazir",
   subsets: ["arabic", "latin"],
   adjustFontFallback: true,
-  display: "swap", 
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -40,19 +41,20 @@ export default async function LocaleLayout({
 
   const messages = await import(`@/messages/${locale}.json`).then((mod) => mod.default);
 
- 
   const initialDir = locale === "fa" ? "rtl" : "ltr";
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className={`antialiased ${
-        locale === "fa" 
-          ? `${vazir.variable} font-vazir` 
-          : `${geistSans.variable} ${geistMono.variable} font-geist`
-      }`}>
+      <body
+        className={`antialiased ${
+          locale === "fa" ? `${vazir.variable} font-vazir` : `${geistSans.variable} ${geistMono.variable} font-geist`
+        }`}
+      >
         <NextIntlClientProvider locale={locale} messages={messages}>
           <DirectionWrapper initialDir={initialDir}>
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-              <AppHydrationLoader>{children}</AppHydrationLoader>
+              <LoaderProvider>
+                <AppHydrationLoader>{children}</AppHydrationLoader>
+              </LoaderProvider>
             </ThemeProvider>
           </DirectionWrapper>
         </NextIntlClientProvider>

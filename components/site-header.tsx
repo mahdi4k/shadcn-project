@@ -2,17 +2,19 @@
 
 import { Button } from "@/components/ui/button";
 import { useDirection } from "@/components/direction-wrapper";
-import { BellDot, Moon, Search, Sun } from "lucide-react";
+import { BellDot, Globe, Moon, Search, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Input } from "./ui/input";
 import { useRouter, usePathname } from "@/i18n/navigation";
 import { useLocale } from "next-intl";
+import { useLoader } from "./loader-context";
 
 export function SiteHeader() {
   const { theme, setTheme } = useTheme();
   const [isMounted, setIsMounted] = useState(false);
   const { setDirection } = useDirection(); // Use setDirection
+  const { setLoading } = useLoader(); // ✅ Use
 
   // useEffect(() => {
   //   document.documentElement.dir = dir;
@@ -35,7 +37,8 @@ const switchLanguage = () => {
   const nextLocale = locale === "fa" ? "en" : "fa";
   
   // Get preferred direction for the new locale
-  const preferredDir = nextLocale === "fa" ? "rtl" : "ltr";  
+  const preferredDir = nextLocale === "fa" ? "rtl" : "ltr";
+  setLoading(true);
   // Check if user has a stored direction preference
    
   // Set direction based on user preference or locale default
@@ -51,26 +54,27 @@ const switchLanguage = () => {
     <header className="flex h-(--header-height) shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-(--header-height)">
       <div className="flex w-full items-center gap-1 px-4 justify-between lg:gap-2 lg:px-6">
         <div className="relative w-full max-w-md">
-          <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-primary/60" />
+          <Search className="absolute ltr:left-4 rtl:right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground/60" />
           <Input
             type="text"
             placeholder="Search for something"
-            className="pl-12 pr-4 py-2 rounded-full bg-muted text-primary/70 placeholder:text-primary/50 border-none focus-visible:ring-0 focus-visible:ring-offset-0"
+            className="pl-12 rtl:ps-12 py-2 rounded-full bg-sidebar-primary-foreground text-muted-foreground/70 placeholder:text-muted-foreground/50 border-none focus-visible:ring-0 focus-visible:ring-offset-0"
           />
         </div>
         {/* ✅ Direction Toggle */}
         <button
           onClick={switchLanguage}
           title={`Switch to ${nextLocale.toUpperCase()}`}
-          className="flex items-center cursor-pointer gap-2 rounded-full bg-muted px-3 py-1.5 text-primary hover:bg-muted/80"
+          className="flex items-center cursor-pointer gap-2 rounded-full bg-sidebar-primary-foreground px-3 py-1.5 text-muted-foreground hover:bg-sidebar-primary-foreground/80"
         >
+            <Globe size={20}/>
           <span className="text-sm font-medium">{locale === "fa" ? "En" : "Fa"}</span>
         </button>
 
         {/* ✅ Theme Toggle */}
         {isMounted && (
           <Button
-            className="rounded-full cursor-pointer bg-muted text-primary"
+            className="rounded-full hover:bg-sidebar-primary-foreground/80 cursor-pointer bg-sidebar-primary-foreground text-muted-foreground"
             variant="secondary"
             size="icon"
             onClick={toggleTheme}
@@ -83,7 +87,7 @@ const switchLanguage = () => {
         <Button
           variant="secondary"
           size={"icon"}
-          className="flex items-center bg-muted cursor-pointer gap-2 rounded-full px-3 py-1.5 text-primary hover:bg-muted/80"
+          className="flex items-center bg-sidebar-primary-foreground cursor-pointer gap-2 rounded-full px-3 py-1.5 text-muted-foreground hover:bg-sidebar-primary-foreground/80"
         >
           <BellDot className="w-5 h-5" />
         </Button>
