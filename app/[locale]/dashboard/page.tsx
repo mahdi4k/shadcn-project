@@ -7,10 +7,8 @@ import TransactionHistory from "@/components/transaction-history";
 import { Separator } from "@/components/ui/separator";
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import WeeklyTransactionChart from "@/components/weekly-transaction-chart";
-import { useTranslations } from 'next-intl';
 
 export default function Page() {
-    const t = useTranslations('Home');
 
   return (
     <SidebarProvider>
@@ -21,7 +19,7 @@ export default function Page() {
             <div className="flex items-center">
               <SidebarTrigger />
               <h1 className="text-base font-medium ms-3.5">Accounts</h1>
-               <h1>{t('title')}</h1>
+                
             </div>
 
             <Separator orientation="vertical" className="mr-2 h-4" />

@@ -19,18 +19,25 @@ const DirectionContext = createContext<DirectionContextType>({
 
 export const useDirection = () => useContext(DirectionContext);
 
-export default function DirectionWrapper({ children,initialDir  }: { children: ReactNode ,initialDir: Direction }) {
-  const [dir, setDir] = useState<Direction>(initialDir);
+export default function DirectionWrapper({ children, initialDir }: { children: ReactNode; initialDir: Direction }) {
+  const [dir, setDir] = useState<Direction>(() => {
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem("dir") as Direction;
+      return stored || initialDir;
+    }
+    return initialDir;
+  });
+  const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem("dir") as Direction;
-    if (stored) setDir(stored);
+    setIsInitialized(true);
   }, []);
-
+ 
   useEffect(() => {
+    if (!isInitialized) return;
     document.documentElement.setAttribute("dir", dir);
     localStorage.setItem("dir", dir);
-  }, [dir]);
+  }, [dir, isInitialized]);
 
   const toggleDir = () => {
     setDir((prev) => (prev === "ltr" ? "rtl" : "ltr"));

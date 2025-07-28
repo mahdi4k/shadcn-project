@@ -1,5 +1,13 @@
 {
   "Home": {
     "title": "به صفحه اصلی خوش آمدید"
+  },
+   "Navigation": {
+    "dashboard": "داشبورد",
+    "transactions": "تراکنش‌ها",
+    "investments": "سرمایه‌گذاری‌ها",
+    "credit_cards": "کارت‌های اعتباری",
+    "loans": "وام‌ها",
+    "accounts": "حساب ها"
   }
 }

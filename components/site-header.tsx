@@ -31,14 +31,21 @@ export function SiteHeader() {
   const locale = useLocale();
   const nextLocale = locale === "fa" ? "en" : "fa";
 
-  const switchLanguage = () => {
-    // Set direction based on next locale
-    const newDir = nextLocale === "fa" ? "rtl" : "ltr";
-    setDirection(newDir); // Use setDirection from context
+const switchLanguage = () => {
+  const nextLocale = locale === "fa" ? "en" : "fa";
+  
+  // Get preferred direction for the new locale
+  const preferredDir = nextLocale === "fa" ? "rtl" : "ltr";  
+  // Check if user has a stored direction preference
+   
+  // Set direction based on user preference or locale default
+  setDirection(preferredDir);
+  
+  // Update URL
+  router.replace(pathname, { locale: nextLocale });
+};
 
-    // Update URL using next-intl's router
-    router.replace(pathname, { locale: nextLocale });
-  };
+
 
   return (
     <header className="flex h-(--header-height) shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-(--header-height)">

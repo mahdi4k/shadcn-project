@@ -1,5 +1,13 @@
 {
   "Home": {
     "title": "Welcome to the homepage"
+  },
+  "Navigation": {
+    "dashboard": "Dashboard",
+    "transactions": "Transactions",
+    "investments": "Investments",
+    "credit_cards": "Credit Cards",
+    "loans": "Loans",
+    "accounts": "Accounts"
   }
 }
