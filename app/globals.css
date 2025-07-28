@@ -158,12 +158,22 @@
   --shadow-2xl: var(--shadow-2xl);
 }
 
+.font-geist {
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.font-vazir {
+  font-family: var(--font-vazir), "Vazirmatn", "Segoe UI", Tahoma, sans-serif;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
 
   body {
+    @apply antialiased;
+
     @apply bg-background text-foreground;
   }
 }
