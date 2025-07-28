@@ -14,7 +14,7 @@ export function SectionCards() {
         {/* Text section */}
         <div>
           <div className="text-lg font-medium text-primary/70">My Balance</div>
-          <div className="text-4xl font-bold text-foreground">$12,750</div>
+          <div className="text-2xl mt-2 font-bold text-foreground">$12,750</div>
         </div>
       </Card>
       <Card className="flex items-center flex-row gap-6 rounded-3xl bg-card px-6 py-8">
@@ -26,7 +26,7 @@ export function SectionCards() {
         {/* Text section */}
         <div>
           <div className="text-lg font-medium text-primary/70">My Balance</div>
-          <div className="text-4xl font-bold text-foreground">$12,750</div>
+          <div className="text-2xl mt-2 font-bold text-foreground">$12,750</div>
         </div>
       </Card>
       <Card className="flex items-center flex-row gap-6 rounded-3xl bg-card px-6 py-8">
@@ -38,7 +38,7 @@ export function SectionCards() {
         {/* Text section */}
         <div>
           <div className="text-lg font-medium text-primary/70">My Balance</div>
-          <div className="text-4xl font-bold text-foreground">$12,750</div>
+          <div className="text-2xl mt-2 font-bold text-foreground">$12,750</div>
         </div>
       </Card>
       <Card className="flex items-center flex-row gap-6 rounded-3xl bg-card px-6 py-8">
@@ -50,7 +50,7 @@ export function SectionCards() {
         {/* Text section */}
         <div>
           <div className="text-lg font-medium text-primary/70">My Balance</div>
-          <div className="text-4xl font-bold text-foreground">$12,750</div>
+          <div className="text-2xl mt-2 font-bold text-foreground">$12,750</div>
         </div>
       </Card>
     </div>

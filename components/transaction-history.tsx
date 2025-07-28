@@ -76,7 +76,7 @@ const TransactionHistory = () => {
               {/* Desktop View */}
               <div className="hidden sm:grid grid-cols-12 gap-4 items-center">
                 <div className="col-span-4 flex items-center">
-                  <div className={`p-3 rounded-2xl ltr:me-3 rtl:ms-3  ${activity.iconBg}`}>{activity.icon}</div>
+                  <div className={`p-3 rounded-2xl me-3 ${activity.iconBg}`}>{activity.icon}</div>
                   <div>
                     <h3 className="font-medium text-sm text-gray-800 dark:text-gray-200">{activity.title}</h3>
                     <h3 className="font-medium mt-2 text-sm text-gray-400">{activity.date}</h3>
