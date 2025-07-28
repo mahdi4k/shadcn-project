@@ -1,11 +1,23 @@
+// middleware.ts
 import createMiddleware from 'next-intl/middleware';
-import {routing} from './i18n/routing';
- 
-export default createMiddleware(routing);
- 
+import { routing } from './i18n/routing';
+import { NextRequest } from 'next/server';
+
+const intlMiddleware = createMiddleware(routing);
+
+export default function middleware(req: NextRequest) {
+  const { pathname } = req.nextUrl;
+  
+  // Redirect root to dashboard
+  if (pathname === '/') {
+    const defaultLocale = routing.defaultLocale || routing.locales[0];
+    req.nextUrl.pathname = `/${defaultLocale}/dashboard`;
+    return Response.redirect(req.nextUrl);
+  }
+  
+  return intlMiddleware(req);
+}
+
 export const config = {
-  // Match all pathnames except for
-  // - … if they start with `/api`, `/trpc`, `/_next` or `/_vercel`
-  // - … the ones containing a dot (e.g. `favicon.ico`)
   matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)'
 };
