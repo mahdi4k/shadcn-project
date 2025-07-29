@@ -17,8 +17,8 @@ const CustomTooltip = ({ active, payload, label }: TooltipProps<number, string>)
   if (!active || !payload || payload.length === 0) return null;
 
   return (
-    <div className="p-3 rounded-lg border min-w-[160px]">
-      <p className="font-medium text-gray-900">{label}</p>
+    <div className="p-3 bg-card rounded-lg border min-w-[160px]">
+      <p className="font-medium text-popover">{label}</p>
       {payload.map((entry, index) => (
         <p key={`item-${index}`} className="text-sm mt-1" style={{ color: entry.color }}>
           <span className="inline-block w-3 h-3 rounded-full mr-2" style={{ backgroundColor: entry.color }}></span>
