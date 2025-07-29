@@ -22,17 +22,19 @@ export const useDirection = () => useContext(DirectionContext);
 export default function DirectionWrapper({ children, initialDir }: { children: ReactNode; initialDir: Direction }) {
   const [dir, setDir] = useState<Direction>(() => {
     if (typeof window !== "undefined") {
-      const stored = localStorage.getItem("dir") as Direction;
-      return stored || initialDir;
+      return (
+        (localStorage.getItem("dir") as Direction) ?? (process.env.NEXT_PUBLIC_DEFAULT_DIRECTION as Direction) ?? "rtl"
+      );
     }
-    return initialDir;
+    return "rtl";
   });
+
   const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
     setIsInitialized(true);
   }, []);
- 
+
   useEffect(() => {
     if (!isInitialized) return;
     document.documentElement.setAttribute("dir", dir);

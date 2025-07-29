@@ -40,7 +40,8 @@ const switchLanguage = () => {
   const preferredDir = nextLocale === "fa" ? "rtl" : "ltr";
   setLoading(true);
   // Check if user has a stored direction preference
-   
+   localStorage.setItem("locale", nextLocale);
+
   // Set direction based on user preference or locale default
   setDirection(preferredDir);
   

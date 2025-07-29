@@ -1,11 +1,16 @@
-import { LoginForm } from "@/components/login-form";
+'use client';
 
-export default function Home() {
-  return (
-    <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
-      <div className="w-full max-w-sm">
-        <LoginForm />
-      </div>
-    </div>
-  );
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+
+export default function HomeRedirect() {
+  const router = useRouter();
+
+  useEffect(() => {
+    const stored = localStorage.getItem('locale');
+    const fallback = process.env.NEXT_PUBLIC_DEFAULT_LOCALE || 'fa';
+    router.replace(`/${stored ?? fallback}`);
+  }, []);
+
+  return null;
 }
