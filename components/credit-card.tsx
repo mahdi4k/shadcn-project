@@ -4,7 +4,7 @@ const CreditCard = () => {
   return (
     <div>
       <div className="flex flex-col items-center justify-center bg-gradient-to-br">
-        <div className="w-full max-w-md">
+        <div className="w-full">
           {/* Card Container */}
           <div className="bg-gradient-to-br from-blue-600 to-blue-300 rounded-2xl shadow-2xl overflow-hidden">
             {/* Card Content */}
