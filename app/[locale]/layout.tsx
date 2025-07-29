@@ -41,7 +41,6 @@ export default async function LocaleLayout({
 
   const messages = await import(`@/messages/${locale}.json`).then((mod) => mod.default);
 
-  const initialDir = locale === "fa" ? "rtl" : "ltr";
   return (
     <html lang={locale} suppressHydrationWarning>
       <body
@@ -50,7 +49,7 @@ export default async function LocaleLayout({
         }`}
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <DirectionWrapper initialDir={initialDir}>
+          <DirectionWrapper>
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
               <LoaderProvider>
                 <AppHydrationLoader>{children}</AppHydrationLoader>

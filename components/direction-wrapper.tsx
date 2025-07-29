@@ -19,7 +19,7 @@ const DirectionContext = createContext<DirectionContextType>({
 
 export const useDirection = () => useContext(DirectionContext);
 
-export default function DirectionWrapper({ children, initialDir }: { children: ReactNode; initialDir: Direction }) {
+export default function DirectionWrapper({ children  }: { children: ReactNode; }) {
   const [dir, setDir] = useState<Direction>(() => {
     if (typeof window !== "undefined") {
       return (
